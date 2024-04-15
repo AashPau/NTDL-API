@@ -1,12 +1,20 @@
 import express from "express";
+import morgan from "morgan";
 
-import path from "path";
 const app = express();
+const PORT = process.env.PORT || 8000;
 
-const __dirname = path.resolve();
+//middlewares
+app.use(morgan("dev"));
 
-app.listen(8000, (error) => {
+app.use("/", (req, res) => {
+	res.json({
+		message: "TODO ...",
+	});
+});
+
+app.listen(PORT, (error) => {
 	error
 		? console.log(error)
-		: console.log(`your server is running at http://localhost:8000`);
+		: console.log(`your server is running at http://localhost:${PORT}`);
 });
